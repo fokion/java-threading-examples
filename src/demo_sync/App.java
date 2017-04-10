@@ -16,25 +16,19 @@ public class App {
         app.doWork();
     }
 
-    public synchronized void incrementValue(){
+    public synchronized void incrementValue() {
         count++;
     }
 
     public void doWork() {
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 40000; i++) {
-                    incrementValue();
-                }
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 40000; i++) {
+                incrementValue();
             }
         });
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 40000; i++) {
-                    incrementValue();
-                }
+        Thread t2 = new Thread(() -> {
+            for (int i = 0; i < 40000; i++) {
+                incrementValue();
             }
         });
         t1.start();
@@ -45,7 +39,7 @@ public class App {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("Count is "+count);
+        System.out.println("Count is " + count);
     }
 
 }
