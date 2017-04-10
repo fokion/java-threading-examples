@@ -1,4 +1,4 @@
-package demo_sync;
+package demo_volatile;
 
 /**
  * Created by fokion on 10/04/17.
